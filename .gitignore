@@ -1,0 +1,13 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+*.iml
+
+# Sistema operacional
+.DS_Store
+
+# Configuração local
+application-local.properties
+application-test.properties
