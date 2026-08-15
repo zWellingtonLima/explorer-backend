@@ -1,0 +1,22 @@
+INSERT INTO places (name, description, address, city, country_code, latitude, longitude)
+VALUES
+    ('Torre de Belém', 'Fortaleza manuelina junto ao rio Tejo.', 'Avenida Brasília', 'Lisboa', 'PT', 38.6916, -9.2160),
+    ('Mosteiro dos Jerónimos', 'Mosteiro manuelino classificado como Património Mundial.', 'Praça do Império', 'Lisboa', 'PT', 38.6979, -9.2067),
+    ('Castelo de São Jorge', 'Castelo histórico com vistas sobre Lisboa e o Tejo.', 'Rua de Santa Cruz do Castelo', 'Lisboa', 'PT', 38.7139, -9.1335),
+    ('Palácio Nacional da Pena', 'Palácio romântico no topo da serra de Sintra.', 'Estrada da Pena', 'Sintra', 'PT', 38.7876, -9.3904),
+    ('Quinta da Regaleira', 'Propriedade histórica conhecida pelos jardins e poços iniciáticos.', 'Rua Barbosa du Bocage', 'Sintra', 'PT', 38.7968, -9.3973),
+    ('Livraria Lello', 'Livraria histórica reconhecida pela escadaria e arquitetura.', 'Rua das Carmelitas 144', 'Porto', 'PT', 41.1469, -8.6149),
+    ('Ribeira do Porto', 'Bairro histórico junto ao rio Douro.', 'Cais da Ribeira', 'Porto', 'PT', 41.1406, -8.6110),
+    ('Universidade de Coimbra', 'Universidade histórica com a Biblioteca Joanina e o Paço das Escolas.', 'Paço das Escolas', 'Coimbra', 'PT', 40.2084, -8.4265),
+    ('Santuário do Bom Jesus do Monte', 'Santuário barroco com escadório monumental.', 'Estrada do Bom Jesus', 'Braga', 'PT', 41.5548, -8.3770),
+    ('Vale do Douro', 'Paisagem vinhateira classificada como Património Mundial.', 'Cais do Pinhão', 'Pinhão', 'PT', 41.1908, -7.5457),
+    ('Convento de Cristo', 'Convento ligado à Ordem dos Templários e à Ordem de Cristo.', 'Igreja do Castelo Templário', 'Tomar', 'PT', 39.6031, -8.4174),
+    ('Mosteiro da Batalha', 'Mosteiro gótico construído em memória da Batalha de Aljubarrota.', 'Largo Infante Dom Henrique', 'Batalha', 'PT', 39.6594, -8.8258),
+    ('Santuário de Fátima', 'Complexo religioso associado às aparições de Fátima.', 'Avenida D. José Alves Correia da Silva', 'Fátima', 'PT', 39.6312, -8.6712),
+    ('Templo Romano de Évora', 'Templo romano preservado no centro histórico de Évora.', 'Largo do Conde de Vila Flor', 'Évora', 'PT', 38.5725, -7.9076),
+    ('Gruta de Benagil', 'Gruta marinha acessível a partir da costa algarvia.', 'Praia de Benagil', 'Lagoa', 'PT', 37.0875, -8.4250),
+    ('Praia da Marinha', 'Praia algarvia conhecida pelas falésias e formações rochosas.', 'Estrada da Marinha', 'Lagoa', 'PT', 37.0901, -8.4126),
+    ('Parque Nacional da Peneda-Gerês', 'Parque nacional de montanha com trilhos, cascatas e paisagens naturais.', 'Campo do Gerês', 'Terras de Bouro', 'PT', 41.7620, -8.1620),
+    ('Pico do Arieiro', 'Pico montanhoso da Madeira com vistas sobre a ilha.', 'Estrada do Pico do Arieiro', 'Funchal', 'PT', 32.7355, -16.9280),
+    ('Cabo Girão', 'Promontório com plataforma panorâmica sobre o Atlântico.', 'Estrada do Cabo Girão', 'Câmara de Lobos', 'PT', 32.6577, -17.0153),
+    ('Lagoa das Sete Cidades', 'Lagoa vulcânica na ilha de São Miguel.', 'Sete Cidades', 'Ponta Delgada', 'PT', 37.8594, -25.7808);
