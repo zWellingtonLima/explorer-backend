@@ -41,10 +41,12 @@ public class GlobalExceptionHandler {
         pd.setTitle("Requisição Inválida");
         pd.setType(URI.create("urn:explorer:problem:validation"));
 
-        ApiFieldViolation violation = new ApiFieldViolation(
-                getFieldName(exception.getParameterName()), "Parâmetro obrigatório não enviado."
-        );
-        pd.setProperty("violations", violation);
+        List<ApiFieldViolation> violations = List.of(
+                new ApiFieldViolation(
+                        exception.getParameterName(),
+                        "Parâmetro obrigatório não enviado."
+                ));
+        pd.setProperty("violations", violations);
 
         return pd;
     }
