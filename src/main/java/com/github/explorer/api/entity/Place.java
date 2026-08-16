@@ -40,7 +40,7 @@ public class Place {
 
     @PrePersist
     public void prePersist() {
-        Instant now = Instant.now(); // It can differ in nanoseconds
+        Instant now = Instant.now();
         this.createdAt = now;
         this.updatedAt = now;
     }
