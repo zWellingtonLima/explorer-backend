@@ -1,5 +1,6 @@
 package com.github.explorer.api.exception;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -47,6 +48,15 @@ public class GlobalExceptionHandler {
                         "Parâmetro obrigatório não enviado."
                 ));
         pd.setProperty("violations", violations);
+
+        return pd;
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ProblemDetail handleEntityNotFound(EntityNotFoundException exception) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, exception.getMessage());
+        pd.setTitle("Não encontrado");
+        pd.setType(URI.create("urn:explorer:problem:notfound"));
 
         return pd;
     }
