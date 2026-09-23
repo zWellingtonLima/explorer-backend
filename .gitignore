@@ -5,9 +5,14 @@ target/
 .idea/
 *.iml
 
-# Sistema operacional
+# Operating system
 .DS_Store
 
-# Configuração local
+# Local configuration
 application-local.properties
 application-test.properties
+
+docs/
+
+# OSM seed input (Geofabrik extract, see docs/03-technical.md)
+*.pbf
