@@ -9,52 +9,54 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.net.URI;
-
+import java.util.Locale;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-    private static final String ERROR_TYPE_BASE = "https://explorer.dev/errors/";
+	private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(NotFoundException.class)
-    public ProblemDetail handleNotFound(NotFoundException ex) {
-        return toProblemDetail(HttpStatus.NOT_FOUND, ex);
-    }
+	private static final String ERROR_TYPE_BASE = "https://explorer.dev/errors/";
 
-    @ExceptionHandler(ConflictException.class)
-    public ProblemDetail handleConflict(ConflictException ex) {
-        return toProblemDetail(HttpStatus.CONFLICT, ex);
-    }
+	@ExceptionHandler(NotFoundException.class)
+	public ProblemDetail handleNotFound(NotFoundException ex) {
+		return toProblemDetail(HttpStatus.NOT_FOUND, ex);
+	}
 
-    @ExceptionHandler(BusinessRuleException.class)
-    public ProblemDetail handleBusinessRule(BusinessRuleException ex) {
-        return toProblemDetail(HttpStatus.UNPROCESSABLE_CONTENT, ex);
-    }
+	@ExceptionHandler(ConflictException.class)
+	public ProblemDetail handleConflict(ConflictException ex) {
+		return toProblemDetail(HttpStatus.CONFLICT, ex);
+	}
 
-    @ExceptionHandler(ForbiddenException.class)
-    public ProblemDetail handleForbidden(ForbiddenException ex) {
-        return toProblemDetail(HttpStatus.FORBIDDEN, ex);
-    }
+	@ExceptionHandler(BusinessRuleException.class)
+	public ProblemDetail handleBusinessRule(BusinessRuleException ex) {
+		return toProblemDetail(HttpStatus.UNPROCESSABLE_CONTENT, ex);
+	}
 
-    @ExceptionHandler(Exception.class)
-    public ProblemDetail handleUnexpected(Exception ex) {
-        log.error("Unhandled exception", ex);
-        ProblemDetail pd = ProblemDetail.forStatusAndDetail(
-                HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error ocurred");
-        pd.setProperty("code", "INTERNAL_ERROR");
-        return pd;
-    }
+	@ExceptionHandler(ForbiddenException.class)
+	public ProblemDetail handleForbidden(ForbiddenException ex) {
+		return toProblemDetail(HttpStatus.FORBIDDEN, ex);
+	}
 
-    private ProblemDetail toProblemDetail(HttpStatus status, DomainException ex) {
-        ProblemDetail pd = ProblemDetail.forStatusAndDetail(status, ex.getMessage());
-        pd.setType(URI.create(ERROR_TYPE_BASE + toSlug(ex.getCode())));
-        pd.setProperty("code", ex.getCode());
-        pd.setProperty("params", ex.getParams());
-        return pd;
-    }
+	@ExceptionHandler(Exception.class)
+	public ProblemDetail handleUnexpected(Exception ex) {
+		log.error("Unhandled exception", ex);
+		ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR,
+				"An unexpected error occurred");
+		pd.setProperty("code", "INTERNAL_ERROR");
+		return pd;
+	}
 
-    private static String toSlug(String code) {
-        return code.toLowerCase().replace("_", "-");
-    }
+	private ProblemDetail toProblemDetail(HttpStatus status, DomainException ex) {
+		ProblemDetail pd = ProblemDetail.forStatusAndDetail(status, ex.getMessage());
+		pd.setType(URI.create(ERROR_TYPE_BASE + toSlug(ex.getCode())));
+		pd.setProperty("code", ex.getCode());
+		pd.setProperty("params", ex.getParams());
+		return pd;
+	}
+
+	private static String toSlug(String code) {
+		return code.toLowerCase(Locale.ROOT).replace("_", "-");
+	}
+
 }
